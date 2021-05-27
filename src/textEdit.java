@@ -4,9 +4,8 @@ import javax.swing.border.EmptyBorder;
 public class textEdit {
     private JTextArea area;
     private JFrame frame;
-    JMenuBar menuBar;
-    JMenu menuFile, menuEdit;
-    JMenuItem menuItemNew, menuItemOpen, menuItemSave, menuItemCut, menuItemCopy, menuItemPaste;
+    private menuBar menu;
+
 
     public textEdit() {
 
@@ -18,46 +17,18 @@ public class textEdit {
         }*/
 
         frame = new JFrame("Text Editor");
-        JPanel panel = new JPanel();
         area = new JTextArea();
+        menu = new menuBar(frame, area);
         area.setLineWrap(true);
-        //panel.add(area);
-        //panel.setBorder(new EmptyBorder(5, 5, 5, 5));
         frame.add(area);
         frame.getRootPane().setBorder(new EmptyBorder(5,5,5,5));
         frame.setBounds(15,15,15,15);
         frame.setSize(1000,800);
+        frame.setJMenuBar(menu);
         frame.show();
-
-        menuBar = new JMenuBar();
-
-        menuFile = new JMenu("File");
-        menuBar.add(menuFile);
-
-        menuEdit = new JMenu("Edit");
-        menuBar.add(menuEdit);
-
-        menuItemNew = new JMenuItem("New");
-        menuFile.add(menuItemNew);
-
-        menuItemOpen = new JMenuItem("Open");
-        menuFile.add(menuItemOpen);
-
-        menuItemSave = new JMenuItem("Save");
-        menuFile.add(menuItemSave);
-
-        menuItemCut = new JMenuItem("Cut");
-        menuEdit.add(menuItemCut);
-
-        menuItemCopy = new JMenuItem("Copy");
-        menuEdit.add(menuItemCopy);
-
-        menuItemPaste = new JMenuItem("Paste");
-        menuEdit.add(menuItemPaste);
-
         frame.setVisible(true);
         frame.setSize(420,420);
-        frame.setJMenuBar(menuBar);
+
 
     }
 
