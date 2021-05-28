@@ -27,6 +27,17 @@ public class fileMenu extends JMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        String selected = e.getActionCommand();
+        if (selected.equalsIgnoreCase("New")) {
+            int input = JOptionPane.showConfirmDialog(frame,
+                    "Are you sure you would like to open a new file? Any unsaved progress will be lost.",
+                    "New File Confirmation",
+                    JOptionPane.YES_NO_OPTION,
+                    JOptionPane.QUESTION_MESSAGE);
+            if (input == 0) {
+                area.setText("");
+            }
+        }
 
     }
 }
