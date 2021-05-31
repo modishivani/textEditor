@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.*;
 
 public class fileMenu extends JMenu implements ActionListener {
     JFrame frame;
@@ -36,6 +37,44 @@ public class fileMenu extends JMenu implements ActionListener {
                     JOptionPane.QUESTION_MESSAGE);
             if (input == 0) {
                 area.setText("");
+            }
+        } else if (selected.equalsIgnoreCase("Save")) {
+            JFileChooser fileChooser = new JFileChooser();
+            int choice = fileChooser.showSaveDialog(null);
+            if (choice == fileChooser.APPROVE_OPTION) {
+                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                try {
+                    FileWriter fileWriter = new FileWriter(file, false);
+                    BufferedWriter writer = new BufferedWriter(fileWriter);
+                    writer.write(area.getText());
+                    writer.flush();
+                    writer.close();
+                } catch (IOException ioException) {
+                    JOptionPane.showMessageDialog(frame, ioException.getMessage());
+                }
+
+            }
+        } else if (selected.equalsIgnoreCase("Open")) {
+            JFileChooser fileChooser = new JFileChooser();
+            int choice = fileChooser.showOpenDialog(null);
+            if (choice == fileChooser.APPROVE_OPTION) {
+                File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
+                try {
+                    String readLines = "";
+                    String fileText = "";
+                    FileReader fileReader = new FileReader(file);
+                    BufferedReader reader = new BufferedReader(fileReader);
+                    readLines = reader.readLine();
+                    while (readLines != null) {
+                        fileText += readLines + "\n";
+                        readLines = reader.readLine();
+                    }
+                    area.setText(fileText);
+
+                } catch (Exception e1) {
+                    JOptionPane.showMessageDialog(frame, e1.getMessage());
+                }
+
             }
         }
 

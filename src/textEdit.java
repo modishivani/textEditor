@@ -1,6 +1,7 @@
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 
+
 public class textEdit {
     private JTextArea area;
     private JFrame frame;
@@ -8,13 +9,6 @@ public class textEdit {
 
 
     public textEdit() {
-
-        /*// set look and feel for the entire application
-        try {
-            UIManager.setLookAndFeel(new ());
-        } catch (Exception ex) {
-            System.err.println("Failed to initialize LaF");
-        }*/
 
         frame = new JFrame("Text Editor");
         area = new JTextArea();
