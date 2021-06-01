@@ -5,14 +5,14 @@ import java.io.*;
 
 public class fileMenu extends JMenu implements ActionListener {
     JFrame frame;
-    JTextArea area;
+    JTextPane pane;
     JMenuItem menuItemNew, menuItemOpen, menuItemSave;
 
-    public fileMenu(JFrame f, JTextArea a) {
+    public fileMenu(JFrame f, JTextPane p) {
         this.setText("File");
 
         frame = f;
-        area = a;
+        pane = p;
         menuItemNew = new JMenuItem("New");
         menuItemOpen = new JMenuItem("Open");
         menuItemSave = new JMenuItem("Save");
@@ -36,7 +36,7 @@ public class fileMenu extends JMenu implements ActionListener {
                     JOptionPane.YES_NO_OPTION,
                     JOptionPane.QUESTION_MESSAGE);
             if (input == 0) {
-                area.setText("");
+                pane.setText("");
             }
         } else if (selected.equalsIgnoreCase("Save")) {
             JFileChooser fileChooser = new JFileChooser();
@@ -46,7 +46,7 @@ public class fileMenu extends JMenu implements ActionListener {
                 try {
                     FileWriter fileWriter = new FileWriter(file, false);
                     BufferedWriter writer = new BufferedWriter(fileWriter);
-                    writer.write(area.getText());
+                    writer.write(pane.getText());
                     writer.flush();
                     writer.close();
                 } catch (IOException ioException) {
@@ -69,7 +69,7 @@ public class fileMenu extends JMenu implements ActionListener {
                         fileText += readLines + "\n";
                         readLines = reader.readLine();
                     }
-                    area.setText(fileText);
+                    pane.setText(fileText);
 
                 } catch (Exception e1) {
                     JOptionPane.showMessageDialog(frame, e1.getMessage());

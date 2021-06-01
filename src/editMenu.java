@@ -4,14 +4,14 @@ import java.awt.event.ActionListener;
 
 public class editMenu extends JMenu implements ActionListener {
     JFrame frame;
-    JTextArea area;
+    JTextPane pane;
     JMenuItem menuItemCut, menuItemCopy, menuItemPaste;
 
-    public editMenu(JFrame f, JTextArea a) {
+    public editMenu(JFrame f, JTextPane p) {
         this.setText("Edit");
 
         frame = f;
-        area = a;
+        pane = p;
         menuItemCut = new JMenuItem("Cut");
         menuItemCopy = new JMenuItem("Copy");
         menuItemPaste = new JMenuItem("Paste");
@@ -30,13 +30,13 @@ public class editMenu extends JMenu implements ActionListener {
         String selected = e.getActionCommand();
         if (selected.equalsIgnoreCase("Cut"))
         {
-            area.cut();
+            pane.cut();
         } else if (selected.equalsIgnoreCase("Copy"))
         {
-            area.copy();
+            pane.copy();
         } else if (selected.equalsIgnoreCase("Paste"))
         {
-            area.paste();
+            pane.paste();
         }
     }
 }

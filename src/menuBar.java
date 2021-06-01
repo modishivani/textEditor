@@ -5,16 +5,20 @@ import java.awt.event.ActionListener;
 public class menuBar extends JMenuBar {
 
     JFrame frame;
-    JTextArea area;
+    JTextPane pane;
 
-    public menuBar(JFrame f, JTextArea a) {
+    public menuBar(JFrame f, JTextPane p) {
         frame = f;
-        area = a;
-        fileMenu fileM = new fileMenu(f, a);
-        editMenu fileE = new editMenu(f, a);
+        pane = p;
+        fileMenu fileM = new fileMenu(f, p);
+        editMenu editM = new editMenu(f, p);
+        sizeMenu sizeM = new sizeMenu(f,p);
+        styleMenu styleM = new styleMenu(f,p);
 
         this.add(fileM);
-        this.add(fileE);
+        this.add(editM);
+        this.add(sizeM);
+        this.add(styleM);
 
         this.setVisible(true);
     }
