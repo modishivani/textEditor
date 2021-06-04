@@ -17,6 +17,7 @@ public class styleMenu extends JMenu implements ActionListener {
         frame = f;
         pane = p;
 
+        //label each menu item
         bold = new JMenuItem("Bold");
         italics = new JMenuItem("Italicize");
         underL = new JMenuItem("Underline");
@@ -24,6 +25,7 @@ public class styleMenu extends JMenu implements ActionListener {
         unItalics = new JMenuItem("Un-italicize");
         noUnderL = new JMenuItem("Remove Underline");
 
+        //when the menu items are clicked, perform the appropriate actions
         bold.addActionListener(this::actionPerformed);
         italics.addActionListener(this::actionPerformed);
         underL.addActionListener(this::actionPerformed);
@@ -31,6 +33,7 @@ public class styleMenu extends JMenu implements ActionListener {
         unItalics.addActionListener(this::actionPerformed);
         noUnderL.addActionListener(this::actionPerformed);
 
+        //add items to the drop down listr
         this.add(bold);
         this.add(italics);
         this.add(underL);
@@ -41,6 +44,7 @@ public class styleMenu extends JMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //determine which item was selected
         String selected = e.getActionCommand();
 
         StyledDocument doc = pane.getStyledDocument();
@@ -59,6 +63,7 @@ public class styleMenu extends JMenu implements ActionListener {
             end = temp;
         }
 
+        //change the style of the highlighted text as specified by the selection
         if (selected.equalsIgnoreCase("Bold")) {
             StyleConstants.setBold(style, true);
         } else if (selected.equalsIgnoreCase("Un-bold")) {
