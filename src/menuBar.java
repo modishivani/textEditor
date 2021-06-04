@@ -15,7 +15,6 @@ public class menuBar extends JMenuBar {
         sizeMenu sizeM = new sizeMenu(f, p);
         styleMenu styleM = new styleMenu(f, p);
         colorMenu colorM = new colorMenu (f, p);
-        
         this.add(fileM);
         this.add(editM);
         this.add(sizeM);
