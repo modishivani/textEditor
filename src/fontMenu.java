@@ -12,30 +12,37 @@ public class fontMenu extends JMenu implements ActionListener {
     JMenuItem serif, sansSerif, monospaced;
 
     public fontMenu(JFrame f, JTextPane p) {
+        //label for the menu bar
         this.setText("Font");
+
+        frame = f;
+        pane = p;
 
         serif = new JMenuItem("Serif");
         sansSerif = new JMenuItem("SansSerif");
         monospaced = new JMenuItem("Monospaced");
 
+        //action listeners for when the user clicks them
         serif.addActionListener(this::actionPerformed);
         sansSerif.addActionListener(this::actionPerformed);
         monospaced.addActionListener(this::actionPerformed);
 
+        //add the different font options to the drop down
         this.add(serif);
         this.add(sansSerif);
         this.add(monospaced);
 
-        frame = f;
-        pane = p;
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //determine which font the user selected
         String selected = e.getActionCommand();
+
         StyledDocument doc = pane.getStyledDocument();
         Style style = pane.addStyle("", null);
 
+        //access the selected text, so that the entire pane's font does not change
         int start = pane.getSelectionStart();
         int end = pane.getSelectionEnd();
         //no selection
@@ -49,6 +56,7 @@ public class fontMenu extends JMenu implements ActionListener {
             end = temp;
         }
 
+        //change the font of the selected text
         if (selected.equalsIgnoreCase("Serif")) {
             StyleConstants.setFontFamily(style, "Serif");
 
