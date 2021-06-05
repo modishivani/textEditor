@@ -8,14 +8,17 @@ public class sizeMenu extends JMenu{
     JSpinner fontSizeSpinner;
 
     public sizeMenu(JFrame f, JTextPane p) {
+        // label for size selection
         this.setText("Size");
         frame = f;
         pane = p;
 
+        // spinner for user to edit font size
         fontSizeSpinner = new JSpinner();
         fontSizeSpinner.setValue(pane.getFont().getSize());
 
         this.add(fontSizeSpinner);
+        // change listener for when user selects
         fontSizeSpinner.addChangeListener(e -> {
 
             StyledDocument doc = pane.getStyledDocument();
