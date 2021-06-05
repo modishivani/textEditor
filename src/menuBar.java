@@ -17,6 +17,7 @@ public class menuBar extends JMenuBar {
         styleMenu styleM = new styleMenu(f, p);
         colorMenu colorM = new colorMenu (f, p);
 
+        // calls menu components
         this.add(fileM);
         this.add(editM);
         this.add(fontM);
@@ -24,6 +25,7 @@ public class menuBar extends JMenuBar {
         this.add(styleM);
         this.add(colorM);
 
+        // sets as visible
         this.setVisible(true);
     }
 
