@@ -10,6 +10,8 @@ public class menuBar extends JMenuBar {
     public menuBar(JFrame f, JTextPane p) {
         frame = f;
         pane = p;
+
+        //construct each menu item for the menu bar
         fileMenu fileM = new fileMenu(f, p);
         editMenu editM = new editMenu(f, p);
         fontMenu fontM = new fontMenu(f,p);
@@ -17,6 +19,7 @@ public class menuBar extends JMenuBar {
         styleMenu styleM = new styleMenu(f, p);
         colorMenu colorM = new colorMenu (f, p);
 
+        //add each type of menu to the bar
         this.add(fileM);
         this.add(editM);
         this.add(fontM);

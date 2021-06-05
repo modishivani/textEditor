@@ -12,14 +12,18 @@ public class editMenu extends JMenu implements ActionListener {
 
         frame = f;
         pane = p;
+
+        //label the menu items
         menuItemCut = new JMenuItem("Cut");
         menuItemCopy = new JMenuItem("Copy");
         menuItemPaste = new JMenuItem("Paste");
 
+        //when they are selected, perform the appropriate action
         menuItemCut.addActionListener(this::actionPerformed);
         menuItemCopy.addActionListener(this::actionPerformed);
         menuItemPaste.addActionListener(this::actionPerformed);
 
+        //add items to the drop down list
         this.add(menuItemCut);
         this.add(menuItemCopy);
         this.add(menuItemPaste);
@@ -27,6 +31,7 @@ public class editMenu extends JMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //determine which item was selected, and perform the appropriate action for each one
         String selected = e.getActionCommand();
         if (selected.equalsIgnoreCase("Cut"))
         {

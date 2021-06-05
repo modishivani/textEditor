@@ -13,14 +13,18 @@ public class fileMenu extends JMenu implements ActionListener {
 
         frame = f;
         pane = p;
+
+        //label the menu items
         menuItemNew = new JMenuItem("New");
         menuItemOpen = new JMenuItem("Open");
         menuItemSave = new JMenuItem("Save");
 
+        //actionlisteners for each menu item
         menuItemNew.addActionListener(this::actionPerformed);
         menuItemOpen.addActionListener(this::actionPerformed);
         menuItemSave.addActionListener(this::actionPerformed);
 
+        //add the menu items to the drop down list
         this.add(menuItemNew);
         this.add(menuItemOpen);
         this.add(menuItemSave);
@@ -28,8 +32,11 @@ public class fileMenu extends JMenu implements ActionListener {
 
     @Override
     public void actionPerformed(ActionEvent e) {
+        //determine which command was selected
         String selected = e.getActionCommand();
+
         if (selected.equalsIgnoreCase("New")) {
+            //confirm new file with user
             int input = JOptionPane.showConfirmDialog(frame,
                     "Are you sure you would like to open a new file? Any unsaved progress will be lost.",
                     "New File Confirmation",
@@ -39,11 +46,13 @@ public class fileMenu extends JMenu implements ActionListener {
                 pane.setText("");
             }
         } else if (selected.equalsIgnoreCase("Save")) {
+            //open file chooser for user
             JFileChooser fileChooser = new JFileChooser();
             int choice = fileChooser.showSaveDialog(null);
             if (choice == fileChooser.APPROVE_OPTION) {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
                 try {
+                    //write and save the contents of the text editor
                     FileWriter fileWriter = new FileWriter(file, false);
                     BufferedWriter writer = new BufferedWriter(fileWriter);
                     writer.write(pane.getText());
@@ -60,6 +69,7 @@ public class fileMenu extends JMenu implements ActionListener {
             if (choice == fileChooser.APPROVE_OPTION) {
                 File file = new File(fileChooser.getSelectedFile().getAbsolutePath());
                 try {
+                    //write the contents of the chosen file onto the text editor
                     String readLines = "";
                     String fileText = "";
                     FileReader fileReader = new FileReader(file);

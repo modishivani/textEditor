@@ -33,6 +33,7 @@ public class sizeMenu extends JMenu{
                 start = end;
                 end = temp;
             }
+
             StyleConstants.setFontSize(style, (int)fontSizeSpinner.getValue());
             doc.setCharacterAttributes(start, end - start, style, false);
         });

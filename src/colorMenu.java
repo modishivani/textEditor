@@ -16,9 +16,11 @@ public class colorMenu extends JMenu implements ActionListener {
         frame = f;
         pane = p;
 
+        //create and label jbutton
         fontcolorButton = new JButton();
-
         fontcolorButton.setText("Choose Color");
+
+        //add to the drop down list
         this.add(fontcolorButton);
         fontcolorButton.addActionListener(this);
 
